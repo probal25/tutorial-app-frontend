@@ -4,7 +4,8 @@ import './App.css';
 import ListTutorialComponents from './components/ListTutorialComponents';
 import HeaderComponents from './components/HeaderComponents';
 import FooterComponents from './components/FooterComponents';
-import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import CreateTutorialComponents from './components/CreateTutorialComponents';
 
 function App() {
   return (
@@ -14,10 +15,11 @@ function App() {
       <Router>
         <HeaderComponents />
           <div className="container">
-            <Routes>
-                <Route path="/" element = {<ListTutorialComponents />} />
-                <Route path="/tutorials" element = {<ListTutorialComponents />} />
-              </Routes>
+            <Switch>
+                <Route path="/" exact component = { ListTutorialComponents } />
+                <Route path="/tutorials" component = { ListTutorialComponents } />
+                <Route path="/add_tutorial" component = { CreateTutorialComponents } />
+            </Switch>
           </div>
           <FooterComponents />
       </Router>

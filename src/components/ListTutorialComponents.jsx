@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import TutorialService from '../services/TutorialService';
+import { withRouter } from 'react-router-dom';
 
 class ListTutorialComponents extends Component {
 
@@ -9,6 +10,8 @@ class ListTutorialComponents extends Component {
         this.state = {
             tutorials: []
         }
+
+        this.addTutorial = this.addTutorial.bind(this);
     }
 
     componentDidMount() {
@@ -21,11 +24,21 @@ class ListTutorialComponents extends Component {
         });
     }
 
+    addTutorial() {
+        let path = `/add_tutorial`;
+        console.log(path);
+        console.log(this.props);
+        this.props.history.push(path);
+    }
+
 
     render() {
         return (
             <div>
                 <h2 className="text-center">Tutorial List</h2>
+                <div className="row" style={{ display: 'flex', justifyContent: 'flex-end' }}>
+                    <button className="btn btn-primary" onClick={this.addTutorial}>Add Tutorial</button>
+                </div>
                 <div className="row">
                     <table className = "table table-stripped table-bordered">
                         <thead>
@@ -55,4 +68,4 @@ class ListTutorialComponents extends Component {
     }
 }
 
-export default ListTutorialComponents;
+export default withRouter(ListTutorialComponents);

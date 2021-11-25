@@ -6,6 +6,10 @@ class TutorialService {
     getTutorials() {
         return axios.get(TUTORIAL_API_BASE_URL);
     }
+
+    createNewTutorial(tutorial) {
+        return axios.post(TUTORIAL_API_BASE_URL, tutorial);
+    }
 }
 
 export default new TutorialService();
